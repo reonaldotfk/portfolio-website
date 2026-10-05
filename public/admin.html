@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Portfolio</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="/">Reonaldo</a>
+      <nav class="nav-links"><a href="/">Kembali ke Beranda</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 style="margin-top:2rem">Panel Admin</h1>
+    <p class="muted">Kelola proyek (D1), pesan masuk (D1), dan upload file (R2).</p>
+
+    <section id="login-box" class="admin-login">
+      <form id="login-form" class="form">
+        <label>
+          Token Admin
+          <input type="password" id="token" placeholder="Masukkan ADMIN_TOKEN" autocomplete="off" />
+        </label>
+        <button class="btn btn-primary" type="submit">Masuk</button>
+        <p class="muted" style="font-size:.9rem">Token diatur sebagai secret <code>ADMIN_TOKEN</code> di Cloudflare (lihat README).</p>
+      </form>
+    </section>
+
+    <section id="panel" class="admin-panel">
+      <h2>Pesan Masuk</h2>
+      <div id="messages"><p class="muted">Memuat…</p></div>
+
+      <h2 style="margin-top:2.5rem">Proyek</h2>
+      <form id="project-form" class="form">
+        <label>Judul<input type="text" id="p-title" required maxlength="200" /></label>
+        <label>Teknologi<input type="text" id="p-tech" maxlength="200" placeholder="cth: React, Cloudflare" /></label>
+        <label>Deskripsi<textarea id="p-desc" rows="3" maxlength="2000"></textarea></label>
+        <label>URL<input type="url" id="p-url" maxlength="500" placeholder="https://…" /></label>
+        <div class="admin-row">
+          <label style="margin:0">Gambar <input type="file" id="p-file" accept="image/*" /></label>
+          <button type="button" class="btn btn-ghost btn-small" id="upload-btn">Upload ke R2</button>
+        </div>
+        <label>URL Gambar<input type="text" id="p-image" maxlength="500" placeholder="/api/files/…" /></label>
+        <button class="btn btn-primary" type="submit">Tambah Proyek</button>
+      </form>
+      <div id="project-list"><p class="muted">Memuat…</p></div>
+    </section>
+  </main>
+
+  <script src="/admin.js"></script>
+</body>
+</html>

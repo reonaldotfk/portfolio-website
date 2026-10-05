@@ -1,0 +1,21 @@
+# Konfigurasi Cloudflare Pages
+# Dokumentasi lengkap ada di README.md
+
+name = "portfolio-website"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "public"
+
+# --- Database D1 ---
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio_db"
+database_id = "GANTI_DENGAN_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+# --- Object storage R2 ---
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "portfolio-assets"
+
+# ADMIN_TOKEN diset sebagai secret (bukan di sini), contoh:
+#   wrangler pages secret put ADMIN_TOKEN
