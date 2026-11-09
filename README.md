@@ -13,11 +13,10 @@ Website portfolio modern yang berjalan **100% di Cloudflare**:
 
 ```
 portfolio-website/
-├── public/                 # Website statis (HTML/CSS/JS)
-│   ├── index.html          # Halaman utama portfolio
+├── public/                 # Website statis
+│   ├── index.html          # Halaman utama: portfolio Brand Communications (single-file, GSAP via CDN)
 │   ├── admin.html          # Panel admin (kelola proyek, pesan, upload)
-│   ├── styles.css
-│   ├── app.js
+│   ├── styles.css          # Gaya panel admin
 │   └── admin.js
 ├── functions/              # Pages Functions (API)
 │   ├── api/projects.js         → GET daftar proyek (D1)

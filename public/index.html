@@ -1,170 +1,312 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reonaldo® — Developer & Kreator Digital</title>
-  <meta name="description" content="Portfolio Reonaldo: developer & kreator digital. Website modern, cepat, dan mudah digunakan — didukung Cloudflare." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reonaldo, Brand Communications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#E8EBE7;--ink:#0E1116;--mute:#7C8280;--acc:#FF5A1F;--deep:#0E1116;--light:#E8EBE7;--serif:'Fraunces',Georgia,serif;--sans:'Inter Tight',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#14171C;--ink:#E8EBE7;--mute:#8A9190}}
+:root[data-theme="dark"]{--paper:#14171C;--ink:#E8EBE7;--mute:#8A9190}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.serif{font-family:var(--serif);font-weight:300;text-transform:uppercase;line-height:.95;letter-spacing:-.02em}
+header{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;justify-content:space-between;align-items:baseline;padding:calc(env(safe-area-inset-top,0px) + 18px) 28px 0;color:#fff;mix-blend-mode:difference;pointer-events:none}
+header>*{pointer-events:auto}
+header .logo{font:300 1.7rem/1 var(--serif);letter-spacing:-.02em}
+header nav{display:flex;gap:22px}
+header .clock{font-size:13px;opacity:.8}
+/* preloader */
+#pre{position:fixed;inset:0;z-index:100;background:var(--deep);color:var(--light);display:grid;place-items:center;clip-path:circle(150% at 50% 50%)}
+#pre svg{width:min(60vw,520px);overflow:visible}
+#pre path{fill:none;stroke:var(--acc);stroke-width:1.5}
+#pre .n{position:absolute;right:28px;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);font:300 clamp(3rem,9vw,7rem)/1 var(--serif)}
+/* work index */
+#work{position:relative;height:100svh;min-height:560px;overflow:hidden}
+.col{position:absolute;inset:0}
+.it{position:absolute;left:50%;top:50%;width:min(21vw,250px);min-width:150px;aspect-ratio:4/5;padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;background:var(--g);cursor:pointer;will-change:transform;text-align:left}
+.it .yr{font-size:12px;opacity:.85}
+.it .tt{font:300 clamp(1.1rem,1.8vw,1.6rem)/1 var(--serif);text-transform:uppercase}
+.names{position:absolute;left:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:3px;font-size:13px;max-width:22vw}
+.names button{text-align:left;color:var(--mute);transition:color .3s}
+.names button.on{color:var(--ink)}
+.meta{position:absolute;right:28px;top:50%;transform:translateY(-50%);width:min(22vw,260px);font-size:13px}
+.meta .c{font:300 1.8rem/1.05 var(--serif);margin-bottom:10px}
+.meta p{margin:0;color:var(--mute)}
+.count{position:absolute;right:28px;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);font-size:13px}
+.hint{position:absolute;left:28px;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);font-size:13px;color:var(--mute)}
+/* cursor */
+.cur{position:fixed;left:0;top:0;z-index:200;width:46px;height:46px;margin:-23px 0 0 -23px;pointer-events:none;display:none;place-items:center;color:#fff;mix-blend-mode:difference;transition:width .3s,height .3s,margin .3s}
+.cur::before,.cur::after{content:"";position:absolute;top:0;bottom:0;width:30%;border:2px solid #fff;border-radius:16px}
+.cur::before{left:0;border-right:0}.cur::after{right:0;border-left:0}
+.cur span{font-size:12px;opacity:0;transition:opacity .2s}
+.cur.big{width:96px;height:96px;margin:-48px 0 0 -48px}.cur.big span{opacity:1}
+@media (hover:hover) and (pointer:fine){.cur{display:grid}}
+/* journey */
+#journey{position:relative;background:var(--deep);color:var(--light);padding:18vh 28px 12vh;overflow:hidden}
+.trail{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+.trail path{fill:none;stroke:var(--acc);stroke-width:1.5;opacity:.75}
+.jintro{position:relative;min-height:80vh;display:flex;flex-direction:column;justify-content:center}
+.bigname{font-size:clamp(3.4rem,17vw,16rem);transform-origin:left center;margin:0}
+.jintro p{max-width:34ch;margin:24px 0 0;color:#aab0ac}
+.ch{position:relative;display:grid;grid-template-columns:minmax(80px,16%) 1fr;gap:20px;min-height:72vh;align-content:center;padding:6vh 0}
+.ch .y{font-size:13px;color:var(--acc);padding-top:.9em}
+.ch h3{font-size:clamp(1.7rem,4.2vw,3.7rem);margin:0;max-width:20ch}
+.ch p{max-width:46ch;margin:22px 0 0;color:#aab0ac;font-family:var(--serif);font-size:1.05rem;line-height:1.6}
+.ch.r h3,.ch.r p{margin-left:auto;text-align:left}
+.fl{position:absolute;width:min(22vw,240px);aspect-ratio:3/4;right:6%;top:18%;background:var(--g);opacity:.9;z-index:0}
+.ch.r .fl{right:auto;left:22%}
+.ch>div{position:relative;z-index:1}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.w>span{display:inline-block;transform:translateY(110%)}
+.end{position:relative;padding:14vh 0 0}
+.end h3{font-size:clamp(2rem,6vw,5rem);margin:0 0 30px;max-width:16ch}
+.btn{display:inline-block;border:1px solid currentColor;border-radius:99px;padding:16px 30px;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:var(--acc);border-color:var(--acc);color:#0E1116}
+/* contact */
+#contact{min-height:90svh;padding:16vh 28px 40px;display:flex;flex-direction:column;justify-content:space-between}
+#contact h2{font-size:clamp(2.6rem,10.5vw,10rem);margin:0}
+#contact .row{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;align-items:center;margin-top:60px}
+#contact .links{display:flex;gap:26px}
+#contact .links a{border-bottom:1px solid var(--mute)}
+/* case overlay */
+#case{position:fixed;inset:0;z-index:60;background:var(--deep);color:var(--light);overflow-y:auto;visibility:hidden;clip-path:circle(0% at 50% 50%)}
+#case .in{padding:calc(env(safe-area-inset-top,0px) + 90px) 28px 12vh;max-width:1400px;margin:0 auto}
+#case .x{position:fixed;top:calc(env(safe-area-inset-top,0px) + 16px);right:28px;z-index:3;border:1px solid var(--light);border-radius:99px;padding:8px 18px;background:var(--deep)}
+#case h1{font-size:clamp(2.6rem,9vw,8.5rem);margin:0 0 40px;max-width:14ch}
+.mrow{display:flex;flex-wrap:wrap;gap:12px 48px;font-size:13px;color:#aab0ac;border-top:1px solid #2a2f35;padding-top:16px;margin-bottom:12vh}
+.mrow b{display:block;color:var(--light);font-weight:500}
+.sec{display:grid;grid-template-columns:minmax(120px,22%) 1fr;gap:20px;padding:6vh 0;border-top:1px solid #2a2f35}
+.sec h4{margin:0;font:500 14px/1.4 var(--sans);color:var(--acc)}
+.sec p{margin:0;max-width:52ch;font:300 clamp(1.2rem,2.2vw,1.9rem)/1.35 var(--serif)}
+.sec p.ph{color:#6d7470}
+.vis{height:min(60vh,520px);margin:6vh 0;background:var(--g)}
+.nxt{display:block;margin-top:10vh;border-top:1px solid #2a2f35;padding-top:30px}
+.nxt small{color:#aab0ac}.nxt .serif{font-size:clamp(2rem,7vw,6rem);display:block;margin-top:8px}
+.nxt:hover .serif{color:var(--acc)}
+@media (max-width:760px){
+ header nav{gap:14px}header .clock{display:none}
+ .names{display:none}
+ .it{width:54vw}
+ .meta{top:auto;bottom:70px;right:auto;left:28px;transform:none;width:60vw}
+ .meta .c{font-size:1.3rem}
+ .ch,.sec{grid-template-columns:1fr}.fl{display:none}
+ .ch .y{padding:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.w>span{transform:none}}
+</style>
 </head>
 <body>
-  <!-- Kursor kustom (desktop) -->
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
-  <div class="cursor-label" id="cursor-label" aria-hidden="true">Lihat ↗</div>
+<div id="pre" aria-hidden="true">
+ <svg viewBox="0 0 520 120"><path id="prePath" d="M0 90 C70 90 80 20 150 40 S230 110 300 70 S400 10 440 50 S500 80 520 60"/></svg>
+ <div class="n" id="preN">0</div>
+</div>
+<div class="cur" id="cur" aria-hidden="true"><span></span></div>
 
-  <!-- Preloader -->
-  <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <div class="preloader-name" id="preloader-name">REONALDO<span class="accent">®</span></div>
-      <div class="preloader-meta">
-        <span>Portfolio © <span id="preloader-year"></span></span>
-        <span class="preloader-count"><span id="preloader-count">0</span>%</span>
-      </div>
-    </div>
-    <div class="preloader-panel preloader-panel-left"></div>
-    <div class="preloader-panel preloader-panel-right"></div>
-  </div>
+<header>
+ <a class="logo" href="#work" data-cur="">Reonaldo</a>
+ <nav><a href="#work">Work</a><a href="#journey">Journey</a><a href="#contact">Contact</a></nav>
+ <span class="clock" id="clock"></span>
+</header>
 
-  <!-- Header -->
-  <header class="site-header" id="site-header">
-    <a class="wordmark" href="#beranda">REONALDO<span class="accent">®</span></a>
-    <nav class="site-nav">
-      <a href="#proyek">Proyek</a>
-      <a href="#tentang">Tentang</a>
-      <a href="#kontak">Kontak</a>
-    </nav>
-    <div class="header-clock">
-      <span class="dot-live"></span>
-      <span id="clock">WIB --:--:--</span>
-    </div>
-  </header>
+<main>
+<section id="work" aria-label="Selected work">
+ <div class="names" id="names"></div>
+ <div class="col" id="col"></div>
+ <div class="meta" id="meta" aria-live="polite"><div class="c serif" id="mc"></div><p id="mp"></p></div>
+ <div class="hint">Scroll or drag to browse</div>
+ <div class="count" id="count"></div>
+</section>
 
-  <main id="beranda">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-top">
-        <p class="hero-kicker reveal">Developer &amp; Kreator Digital</p>
-        <p class="hero-location reveal">Berbasis di Indonesia — bekerja untuk siapa saja, di mana saja</p>
-      </div>
-      <h1 class="hero-title" aria-label="Reonaldo">
-        <span class="hero-line"><span class="hero-word">REONALDO</span></span>
-      </h1>
-      <div class="hero-bottom">
-        <p class="hero-desc reveal">Saya membangun website modern yang cepat, rapi, dan mudah digunakan — dari ide sampai live di Cloudflare.</p>
-        <a class="hero-cta reveal" href="#proyek">Lihat Proyek <span aria-hidden="true">↓</span></a>
-      </div>
-      <div class="hero-strip" aria-hidden="true">
-        <img src="https://picsum.photos/seed/reo-hero-1/480/640" alt="" loading="lazy" data-speed="0.12" />
-        <img src="https://picsum.photos/seed/reo-hero-2/480/640" alt="" loading="lazy" data-speed="-0.08" />
-        <img src="https://picsum.photos/seed/reo-hero-3/480/640" alt="" loading="lazy" data-speed="0.06" />
-      </div>
-    </section>
+<section id="journey" aria-label="Career journey">
+ <svg class="trail" id="trail" aria-hidden="true"><path id="tpath"/></svg>
+ <div class="jintro">
+  <h2 class="bigname serif" id="bigname">Reonaldo</h2>
+  <p>A career told in chapters: from telling stories with a camera to shaping how a company speaks, and how its people feel.</p>
+ </div>
+ <article class="ch"><div class="y">Early years</div><div><h3 class="serif rv">Behind the lens</h3><p>Creative and video production taught me rhythm, framing and restraint, the basics of telling a story people stay for.</p></div><div class="fl" style="--g:linear-gradient(160deg,#2b3a4a,#0E1116)"></div></article>
+ <article class="ch r"><div class="y">2021–2022</div><div><h3 class="serif rv">Freelance years</h3><p>Content, branding and photography projects for different clients, including the company I would later join.</p></div><div class="fl" style="--g:linear-gradient(200deg,#FF5A1F,#5a1e08)"></div></article>
+ <article class="ch"><div class="y">2022–2023</div><div><h3 class="serif rv">The first employer branding role</h3><p>A newly created position. I built the framework and the culture programs behind two Great Place to Work certifications.</p></div><div class="fl" style="--g:linear-gradient(160deg,#3d6b8f,#12202c)"></div></article>
+ <article class="ch r"><div class="y">2024</div><div><h3 class="serif rv">Giving the company a voice</h3><p>Moved into corporate communications, mapped every touchpoint and wrote the first brand book.</p></div><div class="fl" style="--g:linear-gradient(200deg,#e8e0c8,#6b5f3c)"></div></article>
+ <article class="ch"><div class="y">2025</div><div><h3 class="serif rv">From brand book to behavior</h3><p>Took the brand book to the floor through events and activations, and helped shape a service signature called Meaningful Journey.</p></div><div class="fl" style="--g:linear-gradient(160deg,#FF5A1F,#2b3a4a)"></div></article>
+ <article class="ch r"><div class="y">2026</div><div><h3 class="serif rv">Leading the voice</h3><p>Leading a small team across employer branding, PR and CSR. Owning the annual strategy, events, crisis communication and guidelines.</p></div><div class="fl" style="--g:linear-gradient(200deg,#1c2b3a,#3d6b8f)"></div></article>
+ <div class="end"><h3 class="serif rv">Brands people feel, not just see.</h3><a class="btn" href="#work" data-cur="">See the work</a></div>
+</section>
 
-    <!-- Marquee -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>TERSEDIA UNTUK PROYEK <i>✦</i> WEB DEVELOPMENT <i>✦</i> UI / UX <i>✦</i> SERVERLESS <i>✦</i> CLOUDFLARE <i>✦</i>&nbsp;</span>
-        <span>TERSEDIA UNTUK PROYEK <i>✦</i> WEB DEVELOPMENT <i>✦</i> UI / UX <i>✦</i> SERVERLESS <i>✦</i> CLOUDFLARE <i>✦</i>&nbsp;</span>
-      </div>
-    </div>
+<section id="contact" aria-label="Contact">
+ <h2 class="serif">Let’s build something meaningful.</h2>
+ <div class="row">
+  <a class="btn" id="mag" href="mailto:Taufikreonaldo@gmail.com" data-cur="">Taufikreonaldo@gmail.com</a>
+  <div class="links"><a href="#" data-cur="">LinkedIn</a><a href="#" data-cur="">Instagram</a></div>
+ </div>
+</section>
+</main>
 
-    <!-- Proyek -->
-    <section class="work" id="proyek">
-      <div class="work-head">
-        <h2 class="section-title reveal">Proyek Pilihan</h2>
-        <p class="work-count reveal">(<span id="work-count">03</span>)</p>
-      </div>
+<div id="case" role="dialog" aria-modal="true" aria-label="Case study"></div>
 
-      <div class="work-layout">
-        <!-- Daftar proyek -->
-        <div class="work-list" id="work-list">
-          <p class="muted" id="work-loading">Memuat proyek…</p>
-        </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const NA="[Add approved detail]";
+const cases=[
+ {t:"Brand Book",cat:"Brand identity",role:"Author, communications lead",yr:"2024–2025",g:"linear-gradient(160deg,#1f4f7a,#0E1116)",
+  ctx:"The company needed an identity of its own as an outdoor lifestyle retailer, one that every team could use the same way.",idea:"A brand book that turns values into everyday guidance, then travels to the floor through events and activations.",ins:NA,ex:NA,im:NA},
+ {t:"Meaningful Journey",cat:"Service signature",role:"Co-formulator, internal comms",yr:"2025",g:"linear-gradient(200deg,#FF5A1F,#4a1a08)",
+  ctx:"Retail service needed a shared signature built on three ideas: valuable, personalized and effortless.",idea:"An internal communication framework and campaigns that make each idea something a store team can act on.",ins:NA,ex:NA,im:NA},
+ {t:"Great Place to Work",cat:"Employer branding",role:"Employer branding",yr:"2022–2023",g:"linear-gradient(160deg,#3d6b8f,#12202c)",
+  ctx:"A newly created employer branding role, starting from zero.",idea:"A framework and culture programs that gave employees a reason to speak well of their workplace.",ins:NA,ex:"Two Great Place to Work certifications.",im:NA},
+ {t:"Talent Attraction",cat:"HR Excellence Award",role:"Talent attraction strategy",yr:"2024",g:"linear-gradient(200deg,#c9ced0,#46505a)",
+  ctx:"Silver medal, Best Talent Sourcing &amp; Talent Attraction Strategy, won together with the Talent Acquisition team.",idea:"Talent attraction led from the employer brand, with sourcing led by Talent Acquisition.",ins:NA,ex:NA,im:NA},
+ {t:"Golden Return",cat:"Internal campaign",role:"Campaign lead",yr:"2026",g:"linear-gradient(160deg,#d9a53b,#3b2a08)",
+  ctx:"The 2026 Agustusan celebration, built around the idea of One for All.",idea:"A celebration concept, key visual and deck that bring every team into one moment.",ins:NA,ex:NA,im:NA},
+ {t:"#HarinyaKamu",cat:"Event concept",role:"Concept &amp; communications",yr:"2026",g:"linear-gradient(200deg,#1c2b3a,#FF5A1F)",
+  ctx:"A customer-facing event for Harpelnas, with a bag check and trade mechanic.",idea:"An event that makes the customer, not the product, the hero of the day.",ins:NA,ex:NA,im:NA}
+];
+const N=cases.length;
 
-        <!-- Kolom gambar parallax -->
-        <div class="work-images" id="work-images" aria-hidden="true"></div>
+/* clock */
+const tick=()=>$('#clock').textContent='WIB '+new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta'}).format(new Date());
+tick();setInterval(tick,20000);
 
-        <!-- Meta proyek aktif -->
-        <aside class="work-meta">
-          <p class="work-meta-label">Sekarang tampil</p>
-          <h3 id="work-meta-title">—</h3>
-          <p id="work-meta-tech">—</p>
-          <p id="work-meta-desc">Arahkan kursor ke daftar proyek untuk melihat pratinjau.</p>
-          <a class="work-meta-link" id="work-meta-link" href="#" target="_blank" rel="noopener">Kunjungi ↗</a>
-        </aside>
-      </div>
+/* build index */
+const col=$('#col'),names=$('#names');
+cases.forEach((c,i)=>{
+ const b=document.createElement('button');b.className='it';b.style.setProperty('--g',c.g);b.dataset.cur='View';
+ b.setAttribute('aria-label',c.t.replace(/&amp;/g,'&')+', open case study');
+ b.innerHTML=`<span class="yr">${c.yr}</span><span class="tt">${c.t}</span>`;
+ b.onclick=e=>{ if(i===Math.round(pos)) openCase(i,e.clientX,e.clientY); else target=i; };
+ col.appendChild(b);
+ const n=document.createElement('button');n.textContent=c.t;n.onclick=()=>target=i;names.appendChild(n);
+});
+const its=$$('.it'),nb=$$('#names button');
+let pos=0,target=0,act=-1,idle;const off={v:0};
+const gap=()=>Math.min(innerHeight*.4,360);
+function setActive(i){
+ if(i===act)return;act=i;
+ nb.forEach((b,k)=>b.classList.toggle('on',k===i));
+ $('#mc').innerHTML=cases[i].cat;$('#mp').innerHTML=cases[i].role;
+ $('#count').textContent=String(i+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
+}
+function render(){
+ pos+=(target-pos)*.1;
+ const g=gap();
+ its.forEach((el,i)=>{
+  const d=i-pos,a=Math.abs(d);
+  const s=1.22-Math.min(a,1)*.62;
+  el.style.transform=`translate(-50%,-50%) translateY(${d*g+off.v*160}px) scale(${s})`;
+  el.style.opacity=Math.max(0,1-Math.max(0,a-.5)*.35)*(1-off.v);
+  el.style.filter=`saturate(${1-Math.min(a,1)*.85})`;
+  el.style.zIndex=10-Math.round(a);
+ });
+ setActive(Math.round(pos));
+ requestAnimationFrame(render);
+}
+const snap=()=>{clearTimeout(idle);idle=setTimeout(()=>target=Math.round(target),140)};
+const work=$('#work');
+work.addEventListener('wheel',e=>{
+ const next=target+e.deltaY*.0035;
+ if((next<0&&target<=0)||(next>N-1&&target>=N-1))return; // let the page scroll
+ e.preventDefault();target=Math.max(0,Math.min(N-1,next));snap();
+},{passive:false});
+let ty=null;
+work.addEventListener('touchstart',e=>{ty=e.touches[0].clientY},{passive:true});
+work.addEventListener('touchmove',e=>{
+ const y=e.touches[0].clientY,next=target+(ty-y)*.012;ty=y;
+ if((next<0&&target<=0)||(next>N-1&&target>=N-1))return;
+ e.preventDefault();target=Math.max(0,Math.min(N-1,next));snap();
+},{passive:false});
+addEventListener('keydown',e=>{
+ if(e.key==='Escape')closeCase();
+ if($('#case').style.visibility==='visible')return;
+ const r=work.getBoundingClientRect();if(r.top>innerHeight*.5||r.bottom<innerHeight*.5)return;
+ if(e.key==='ArrowDown')target=Math.min(N-1,Math.round(target)+1);
+ if(e.key==='ArrowUp')target=Math.max(0,Math.round(target)-1);
+});
 
-      <!-- Pratinjau mengambang (desktop) -->
-      <div class="work-preview" id="work-preview" aria-hidden="true">
-        <img id="work-preview-img" src="" alt="" />
-      </div>
-    </section>
+/* case overlay */
+const cs=$('#case');let cur=0,lastEl=null;
+function openCase(i,x=innerWidth/2,y=innerHeight/2){
+ cur=i;const c=cases[i],nx=cases[(i+1)%N];lastEl=document.activeElement;
+ const sec=(h,t)=>`<div class="sec"><h4>${h}</h4><p class="${t===NA?'ph':''}">${t}</p></div>`;
+ cs.innerHTML=`<button class="x" id="cx" data-cur="">Close</button><div class="in">
+  <h1 class="serif">${c.t}</h1>
+  <div class="mrow"><div>Client<b>Eigerindo</b></div><div>Role<b>${c.role}</b></div><div>Year<b>${c.yr}</b></div><div>Scope<b>${c.cat}</b></div></div>
+  ${sec('Context',c.ctx)}${sec('Insight',c.ins)}${sec('Idea',c.idea)}
+  <div class="vis" style="--g:${c.g}" role="img" aria-label="Placeholder for case visuals"></div>
+  ${sec('Execution',c.ex)}${sec('Impact',c.im)}
+  <a href="#" class="nxt" id="cn" data-cur="Next"><small>Next case</small><span class="serif">${nx.t}</span></a></div>`;
+ $('#cx').onclick=closeCase;
+ $('#cn').onclick=e=>{e.preventDefault();cs.scrollTop=0;openCase((cur+1)%N)};
+ document.body.style.overflow='hidden';cs.style.visibility='visible';cs.scrollTop=0;
+ gsap.killTweensOf(cs);
+ gsap.fromTo(cs,{clipPath:`circle(0% at ${x}px ${y}px)`},{clipPath:`circle(150% at ${x}px ${y}px)`,duration:reduce?0:1,ease:'expo.inOut',onComplete:()=>$('#cx').focus()});
+ if(!reduce)gsap.from('#case h1,#case .mrow',{y:40,opacity:0,duration:.9,stagger:.12,delay:.5,ease:'power3.out'});
+}
+function closeCase(){
+ if(cs.style.visibility!=='visible')return;
+ gsap.to(cs,{clipPath:'circle(0% at 50% 50%)',duration:reduce?0:.8,ease:'expo.inOut',onComplete:()=>{cs.style.visibility='hidden';document.body.style.overflow='';lastEl&&lastEl.focus&&lastEl.focus()}});
+}
 
-    <!-- Tentang -->
-    <section class="about" id="tentang">
-      <p class="about-label reveal">( Tentang Saya )</p>
-      <p class="about-statement" id="about-statement">Saya fokus pada pengembangan web modern: frontend yang rapi, backend yang ringan, dan deployment serverless di Cloudflare. Saya suka mengubah ide menjadi produk nyata yang bisa diakses siapa saja, kapan saja.</p>
-      <div class="about-grid">
-        <div class="about-col reveal">
-          <h3>Frontend</h3>
-          <p>HTML, CSS, JavaScript — antarmuka responsif &amp; aksesibel.</p>
-        </div>
-        <div class="about-col reveal">
-          <h3>Serverless</h3>
-          <p>Cloudflare Pages, Workers &amp; Functions — tanpa server yang perlu diurus.</p>
-        </div>
-        <div class="about-col reveal">
-          <h3>Data &amp; File</h3>
-          <p>D1 untuk database, R2 untuk penyimpanan file &amp; aset.</p>
-        </div>
-        <div class="about-col reveal">
-          <h3>DevOps</h3>
-          <p>Git, GitHub, Wrangler — deploy cepat dan bisa diulang.</p>
-        </div>
-      </div>
-    </section>
+/* cursor */
+const cu=$('#cur'),cl=cu.querySelector('span');let mx=0,my=0,cx=0,cy=0;
+if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!reduce){
+ addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+ addEventListener('mouseover',e=>{const t=e.target.closest('[data-cur]');cu.classList.toggle('big',!!(t&&t.dataset.cur));cl.textContent=t?t.dataset.cur:''});
+ (function f(){cx+=(mx-cx)*.2;cy+=(my-cy)*.2;cu.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(f)})();
+}
 
-    <!-- Kontak -->
-    <section class="contact" id="kontak">
-      <p class="contact-label reveal">Punya ide proyek?</p>
-      <a class="contact-giant" href="mailto:Taufikreonaldo@gmail.com">
-        <span data-text="MARI">MARI</span><span data-text="BICARA">BICARA</span>
-      </a>
-      <div class="contact-bottom">
-        <form id="contact-form" class="form contact-form" autocomplete="on">
-          <p class="form-title">Atau kirim pesan langsung — tersimpan aman di database.</p>
-          <div class="form-row">
-            <label>Nama
-              <input type="text" name="name" required maxlength="100" placeholder="Nama kamu" />
-            </label>
-            <label>Email
-              <input type="email" name="email" required maxlength="200" placeholder="kamu@email.com" />
-            </label>
-          </div>
-          <label>Pesan
-            <textarea name="message" required maxlength="2000" rows="4" placeholder="Ceritakan proyekmu…"></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit" id="contact-submit">Kirim Pesan ↗</button>
-          <p class="form-status" id="contact-status" role="status"></p>
-        </form>
-        <div class="contact-links">
-          <a href="mailto:Taufikreonaldo@gmail.com">Taufikreonaldo@gmail.com</a>
-          <a href="https://github.com/reonaldotfk" target="_blank" rel="noopener">GitHub ↗</a>
-          <a href="/admin.html">Admin</a>
-        </div>
-      </div>
-    </section>
-  </main>
+/* magnetic button */
+const mag=$('#mag');
+if(!reduce)mag.addEventListener('mousemove',e=>{const r=mag.getBoundingClientRect();gsap.to(mag,{x:(e.clientX-r.left-r.width/2)*.3,y:(e.clientY-r.top-r.height/2)*.4,duration:.4})});
+mag.addEventListener('mouseleave',()=>gsap.to(mag,{x:0,y:0,duration:.6,ease:'elastic.out(1,.5)'}));
 
-  <footer class="site-footer">
-    <p>© <span id="year"></span> Reonaldo. Dibangun di atas Cloudflare Pages + R2 + D1.</p>
-    <p>Terinspirasi oleh desain editorial — dibuat dengan caraku sendiri.</p>
-    <a href="#beranda" class="to-top">Kembali ke atas ↑</a>
-  </footer>
+/* journey */
+$$('.rv').forEach(h=>{h.innerHTML=h.textContent.split(' ').map(w=>`<span class="w"><span>${w}</span></span>`).join(' ')});
+const J=$('#journey'),tp=$('#tpath'),tr=$('#trail');
+function drawTrail(){
+ const w=J.offsetWidth,h=J.offsetHeight;tr.setAttribute('viewBox',`0 0 ${w} ${h}`);
+ let d=`M${w*.5} 0`,x=.5,step=Math.max(520,innerHeight*.75);
+ for(let y=0;y<h;y+=step){const nx=x>.5?.1:.9;d+=` C ${w*nx} ${y+step*.3}, ${w*(1-nx)} ${y+step*.7}, ${w*(x>.5?.15:.85)} ${y+step}`;x=x>.5?.15:.85}
+ tp.setAttribute('d',d);const L=tp.getTotalLength();tp.style.strokeDasharray=L;
+ tp.style.strokeDashoffset=reduce?0:L;
+ if(!reduce){tp._tw&&tp._tw.scrollTrigger.kill();tp._tw&&tp._tw.kill();
+  tp._tw=gsap.to(tp,{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:J,start:'top 50%',end:'bottom 85%',scrub:.6}})}
+}
+gsap.registerPlugin(ScrollTrigger);
+drawTrail();
+if(!reduce){
+ gsap.fromTo('#bigname',{scale:1.35,opacity:.15},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:'.jintro',start:'top bottom',end:'center center',scrub:true}});
+ $$('.fl').forEach((f,i)=>gsap.fromTo(f,{yPercent:30},{yPercent:-40-i*4,ease:'none',scrollTrigger:{trigger:f.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
+}
+$$('.rv').forEach(h=>{
+ const s=h.querySelectorAll('.w>span');
+ if(reduce)return;
+ gsap.to(s,{y:0,duration:1,stagger:.07,ease:'power3.out',scrollTrigger:{trigger:h,start:'top 82%'}});
+});
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{drawTrail();ScrollTrigger.refresh()},250)});
 
-  <script src="/app.js"></script>
+/* preloader */
+const pp=$('#prePath'),pl=pp.getTotalLength();pp.style.strokeDasharray=pl;pp.style.strokeDashoffset=pl;
+let seen=false;try{seen=sessionStorage.getItem('rn')}catch(e){}
+render();
+if(reduce||seen){$('#pre').remove()}
+else{
+ try{sessionStorage.setItem('rn','1')}catch(e){}
+ const o={v:0};document.body.style.overflow='hidden';
+ gsap.to(o,{v:100,duration:2.4,ease:'power2.inOut',onUpdate:()=>{$('#preN').textContent=Math.round(o.v);pp.style.strokeDashoffset=pl*(1-o.v/100)},onComplete:()=>{
+  gsap.to('#pre',{clipPath:'circle(0% at 50% 50%)',duration:1.1,ease:'expo.inOut',onStart:()=>{document.body.style.overflow=''},onComplete:()=>$('#pre').remove()});
+  off.v=1;gsap.to(off,{v:0,duration:1.4,ease:'expo.out',delay:.5});
+ }});
+}
+</script>
 </body>
 </html>
