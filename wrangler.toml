@@ -9,12 +9,12 @@ pages_build_output_dir = "public"
 [[d1_databases]]
 binding = "DB"
 database_name = "portfolio_db"
-database_id = "GANTI_DENGAN_D1_DATABASE_ID"
+database_id = "637ca3cf-eb5a-45eb-acf5-d20f7edb2d4f"
 migrations_dir = "migrations"
 
 # --- Object storage R2 ---
 [[r2_buckets]]
-binding = "ASSETS"
+binding = "BUCKET"
 bucket_name = "portfolio-assets"
 
 # ADMIN_TOKEN diset sebagai secret (bukan di sini), contoh:

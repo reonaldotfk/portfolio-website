@@ -17,6 +17,6 @@ export function getDb(context) {
 }
 
 export function getBucket(context) {
-  if (!context.env.ASSETS) throw new Error("Binding R2 (ASSETS) belum dikonfigurasi");
-  return context.env.ASSETS;
+  if (!context.env.BUCKET) throw new Error("Binding R2 (BUCKET) belum dikonfigurasi");
+  return context.env.BUCKET;
 }

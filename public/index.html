@@ -3,96 +3,166 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reonaldo — Portfolio</title>
-  <meta name="description" content="Portfolio Reonaldo: developer & kreator digital." />
+  <title>Reonaldo® — Developer & Kreator Digital</title>
+  <meta name="description" content="Portfolio Reonaldo: developer & kreator digital. Website modern, cepat, dan mudah digunakan — didukung Cloudflare." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="logo" href="#beranda">Reonaldo</a>
-      <nav class="nav-links">
-        <a href="#tentang">Tentang</a>
-        <a href="#keahlian">Keahlian</a>
-        <a href="#proyek">Proyek</a>
-        <a href="#kontak">Kontak</a>
-      </nav>
+  <!-- Kursor kustom (desktop) -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-label" id="cursor-label" aria-hidden="true">Lihat ↗</div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-name" id="preloader-name">REONALDO<span class="accent">®</span></div>
+      <div class="preloader-meta">
+        <span>Portfolio © <span id="preloader-year"></span></span>
+        <span class="preloader-count"><span id="preloader-count">0</span>%</span>
+      </div>
+    </div>
+    <div class="preloader-panel preloader-panel-left"></div>
+    <div class="preloader-panel preloader-panel-right"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <a class="wordmark" href="#beranda">REONALDO<span class="accent">®</span></a>
+    <nav class="site-nav">
+      <a href="#proyek">Proyek</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <div class="header-clock">
+      <span class="dot-live"></span>
+      <span id="clock">WIB --:--:--</span>
     </div>
   </header>
 
-  <main>
-    <section id="beranda" class="hero">
-      <div class="container hero-inner">
-        <p class="hero-kicker">Halo, saya</p>
-        <h1>Reonaldo</h1>
-        <p class="hero-sub">Developer & kreator digital. Saya membangun website modern, cepat, dan mudah digunakan — didukung Cloudflare.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#proyek">Lihat Proyek</a>
-          <a class="btn btn-ghost" href="#kontak">Hubungi Saya</a>
+  <main id="beranda">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-top">
+        <p class="hero-kicker reveal">Developer &amp; Kreator Digital</p>
+        <p class="hero-location reveal">Berbasis di Indonesia — bekerja untuk siapa saja, di mana saja</p>
+      </div>
+      <h1 class="hero-title" aria-label="Reonaldo">
+        <span class="hero-line"><span class="hero-word">REONALDO</span></span>
+      </h1>
+      <div class="hero-bottom">
+        <p class="hero-desc reveal">Saya membangun website modern yang cepat, rapi, dan mudah digunakan — dari ide sampai live di Cloudflare.</p>
+        <a class="hero-cta reveal" href="#proyek">Lihat Proyek <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-strip" aria-hidden="true">
+        <img src="https://picsum.photos/seed/reo-hero-1/480/640" alt="" loading="lazy" data-speed="0.12" />
+        <img src="https://picsum.photos/seed/reo-hero-2/480/640" alt="" loading="lazy" data-speed="-0.08" />
+        <img src="https://picsum.photos/seed/reo-hero-3/480/640" alt="" loading="lazy" data-speed="0.06" />
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>TERSEDIA UNTUK PROYEK <i>✦</i> WEB DEVELOPMENT <i>✦</i> UI / UX <i>✦</i> SERVERLESS <i>✦</i> CLOUDFLARE <i>✦</i>&nbsp;</span>
+        <span>TERSEDIA UNTUK PROYEK <i>✦</i> WEB DEVELOPMENT <i>✦</i> UI / UX <i>✦</i> SERVERLESS <i>✦</i> CLOUDFLARE <i>✦</i>&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- Proyek -->
+    <section class="work" id="proyek">
+      <div class="work-head">
+        <h2 class="section-title reveal">Proyek Pilihan</h2>
+        <p class="work-count reveal">(<span id="work-count">03</span>)</p>
+      </div>
+
+      <div class="work-layout">
+        <!-- Daftar proyek -->
+        <div class="work-list" id="work-list">
+          <p class="muted" id="work-loading">Memuat proyek…</p>
+        </div>
+
+        <!-- Kolom gambar parallax -->
+        <div class="work-images" id="work-images" aria-hidden="true"></div>
+
+        <!-- Meta proyek aktif -->
+        <aside class="work-meta">
+          <p class="work-meta-label">Sekarang tampil</p>
+          <h3 id="work-meta-title">—</h3>
+          <p id="work-meta-tech">—</p>
+          <p id="work-meta-desc">Arahkan kursor ke daftar proyek untuk melihat pratinjau.</p>
+          <a class="work-meta-link" id="work-meta-link" href="#" target="_blank" rel="noopener">Kunjungi ↗</a>
+        </aside>
+      </div>
+
+      <!-- Pratinjau mengambang (desktop) -->
+      <div class="work-preview" id="work-preview" aria-hidden="true">
+        <img id="work-preview-img" src="" alt="" />
+      </div>
+    </section>
+
+    <!-- Tentang -->
+    <section class="about" id="tentang">
+      <p class="about-label reveal">( Tentang Saya )</p>
+      <p class="about-statement" id="about-statement">Saya fokus pada pengembangan web modern: frontend yang rapi, backend yang ringan, dan deployment serverless di Cloudflare. Saya suka mengubah ide menjadi produk nyata yang bisa diakses siapa saja, kapan saja.</p>
+      <div class="about-grid">
+        <div class="about-col reveal">
+          <h3>Frontend</h3>
+          <p>HTML, CSS, JavaScript — antarmuka responsif &amp; aksesibel.</p>
+        </div>
+        <div class="about-col reveal">
+          <h3>Serverless</h3>
+          <p>Cloudflare Pages, Workers &amp; Functions — tanpa server yang perlu diurus.</p>
+        </div>
+        <div class="about-col reveal">
+          <h3>Data &amp; File</h3>
+          <p>D1 untuk database, R2 untuk penyimpanan file &amp; aset.</p>
+        </div>
+        <div class="about-col reveal">
+          <h3>DevOps</h3>
+          <p>Git, GitHub, Wrangler — deploy cepat dan bisa diulang.</p>
         </div>
       </div>
     </section>
 
-    <section id="tentang" class="section">
-      <div class="container">
-        <h2>Tentang Saya</h2>
-        <p class="lead">Saya fokus pada pengembangan web modern: frontend yang rapi, backend yang ringan, dan deployment serverless di Cloudflare (Pages, Workers, R2, D1). Saya suka mengubah ide menjadi produk nyata yang bisa diakses siapa saja, kapan saja.</p>
-      </div>
-    </section>
-
-    <section id="keahlian" class="section section-alt">
-      <div class="container">
-        <h2>Keahlian</h2>
-        <div class="grid skills-grid">
-          <div class="card"><h3>Frontend</h3><p>HTML, CSS, JavaScript, UI responsif & aksesibel</p></div>
-          <div class="card"><h3>Backend Serverless</h3><p>Cloudflare Workers & Pages Functions</p></div>
-          <div class="card"><h3>Database</h3><p>Cloudflare D1 (SQLite di edge)</p></div>
-          <div class="card"><h3>Storage</h3><p>Cloudflare R2 untuk file & aset</p></div>
-          <div class="card"><h3>DevOps</h3><p>Git, GitHub Actions, Wrangler</p></div>
-          <div class="card"><h3>Lainnya</h3><p>REST API, integrasi webhook, optimasi performa</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="proyek" class="section">
-      <div class="container">
-        <h2>Proyek</h2>
-        <p class="section-desc">Data proyek diambil langsung dari API (Cloudflare D1). Kelola lewat halaman admin.</p>
-        <div id="projects" class="grid projects-grid">
-          <p class="muted" id="projects-loading">Memuat proyek…</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="kontak" class="section section-alt">
-      <div class="container">
-        <h2>Kontak</h2>
-        <p class="section-desc">Isi formulir di bawah — pesan tersimpan aman di database D1.</p>
-        <form id="contact-form" class="form" autocomplete="on">
-          <label>
-            Nama
-            <input type="text" name="name" required maxlength="100" placeholder="Nama kamu" />
+    <!-- Kontak -->
+    <section class="contact" id="kontak">
+      <p class="contact-label reveal">Punya ide proyek?</p>
+      <a class="contact-giant" href="mailto:Taufikreonaldo@gmail.com">
+        <span data-text="MARI">MARI</span><span data-text="BICARA">BICARA</span>
+      </a>
+      <div class="contact-bottom">
+        <form id="contact-form" class="form contact-form" autocomplete="on">
+          <p class="form-title">Atau kirim pesan langsung — tersimpan aman di database.</p>
+          <div class="form-row">
+            <label>Nama
+              <input type="text" name="name" required maxlength="100" placeholder="Nama kamu" />
+            </label>
+            <label>Email
+              <input type="email" name="email" required maxlength="200" placeholder="kamu@email.com" />
+            </label>
+          </div>
+          <label>Pesan
+            <textarea name="message" required maxlength="2000" rows="4" placeholder="Ceritakan proyekmu…"></textarea>
           </label>
-          <label>
-            Email
-            <input type="email" name="email" required maxlength="200" placeholder="kamu@email.com" />
-          </label>
-          <label>
-            Pesan
-            <textarea name="message" required maxlength="2000" rows="5" placeholder="Tulis pesanmu…"></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit" id="contact-submit">Kirim Pesan</button>
+          <button class="btn btn-primary" type="submit" id="contact-submit">Kirim Pesan ↗</button>
           <p class="form-status" id="contact-status" role="status"></p>
         </form>
+        <div class="contact-links">
+          <a href="mailto:Taufikreonaldo@gmail.com">Taufikreonaldo@gmail.com</a>
+          <a href="https://github.com/reonaldotfk" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="/admin.html">Admin</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Reonaldo. Dibangun di atas Cloudflare Pages + R2 + D1.</p>
-      <a href="/admin.html" class="muted-link">Admin</a>
-    </div>
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Reonaldo. Dibangun di atas Cloudflare Pages + R2 + D1.</p>
+    <p>Terinspirasi oleh desain editorial — dibuat dengan caraku sendiri.</p>
+    <a href="#beranda" class="to-top">Kembali ke atas ↑</a>
   </footer>
 
   <script src="/app.js"></script>

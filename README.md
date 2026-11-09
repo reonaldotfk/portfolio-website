@@ -7,7 +7,7 @@ Website portfolio modern yang berjalan **100% di Cloudflare**:
 | Hosting website statis | **Pages** (folder `public/`) |
 | API serverless | **Pages Functions** (folder `functions/`) |
 | Database (proyek & pesan kontak) | **D1** (binding `DB`) |
-| Penyimpanan file/gambar | **R2** (binding `ASSETS`) |
+| Penyimpanan file/gambar | **R2** (binding `BUCKET`) |
 
 ## Struktur proyek
 
@@ -52,7 +52,7 @@ npx wrangler login
 
 ```bash
 npm run db:create
-# → catat "database_id" yang muncul, lalu tempel ke wrangler.toml (ganti GANTI_DENGAN_D1_DATABASE_ID)
+# → database_id sudah terisi di wrangler.toml untuk akun ini
 ```
 
 ### 3. Buat bucket R2
