@@ -3,7 +3,9 @@ import { json, getBucket } from "../../lib/util.js";
 export async function onRequestGet(context) {
   try {
     const bucket = getBucket(context);
-    const raw = context.params.key;
+    const rawParts = context.params.key;
+    // Catch-all [[key]] memberi array segmen path, bukan string.
+    const raw = Array.isArray(rawParts) ? rawParts.join("/") : rawParts;
     if (!raw) return json({ error: "Key tidak valid" }, 400);
     const key = decodeURIComponent(raw);
     if (!key.startsWith("uploads/") || key.includes("..")) {
