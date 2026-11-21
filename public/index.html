@@ -20,9 +20,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .serif{font-family:var(--serif);font-weight:300;text-transform:uppercase;line-height:.95;letter-spacing:-.02em}
 header{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;justify-content:space-between;align-items:baseline;padding:calc(env(safe-area-inset-top,0px) + 18px) 28px 0;color:#fff;mix-blend-mode:difference;pointer-events:none}
 header>*{pointer-events:auto}
-header .logo{font:300 1.7rem/1 var(--serif);letter-spacing:-.02em}
+header .logo{align-self:center;line-height:0}
+header .logo svg{display:block;width:30px;height:30px}
 header nav{display:flex;gap:22px}
-header .clock{font-size:13px;opacity:.8}
 /* preloader */
 #pre{position:fixed;inset:0;z-index:100;background:var(--deep);color:var(--light);display:grid;place-items:center;clip-path:circle(150% at 50% 50%)}
 #pre svg{width:min(60vw,520px);overflow:visible}
@@ -85,7 +85,7 @@ header .clock{font-size:13px;opacity:.8}
 .nxt small{color:#aab0ac}.nxt .serif{font-size:clamp(2rem,7vw,6rem);display:block;margin-top:8px}
 .nxt:hover .serif{color:var(--acc)}
 @media (max-width:760px){
- header nav{gap:14px}header .clock{display:none}
+ header nav{gap:14px}
  .names{display:none}
  .it{width:54vw}
  .meta{top:auto;bottom:70px;right:auto;left:28px;transform:none;width:60vw}
@@ -103,9 +103,8 @@ header .clock{font-size:13px;opacity:.8}
 </div>
 
 <header>
- <a class="logo" href="#work">Reonaldo</a>
+ <a class="logo" href="#work" aria-label="Reonaldo — home"><svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M50 4 L92 96 L8 96 Z M50 36 L71 80 L29 80 Z"/></svg></a>
  <nav><a href="#work">Work</a><a href="#journey">Journey</a><a href="#contact">Contact</a></nav>
- <span class="clock" id="clock"></span>
 </header>
 
 <main>
@@ -167,9 +166,6 @@ const cases=[
 ];
 const N=cases.length;
 
-/* clock */
-const tick=()=>$('#clock').textContent='WIB '+new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta'}).format(new Date());
-tick();setInterval(tick,20000);
 
 /* build index */
 const col=$('#col'),names=$('#names');
