@@ -42,13 +42,6 @@ header .clock{font-size:13px;opacity:.8}
 .meta p{margin:0;color:var(--mute)}
 .count{position:absolute;right:28px;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);font-size:13px}
 .hint{position:absolute;left:28px;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);font-size:13px;color:var(--mute)}
-/* cursor */
-.cur{position:fixed;left:0;top:0;z-index:200;width:46px;height:46px;margin:-23px 0 0 -23px;pointer-events:none;display:none;place-items:center;color:#fff;mix-blend-mode:difference;transition:width .3s,height .3s,margin .3s}
-.cur::before,.cur::after{content:"";position:absolute;top:0;bottom:0;width:30%;border:2px solid #fff;border-radius:16px}
-.cur::before{left:0;border-right:0}.cur::after{right:0;border-left:0}
-.cur span{font-size:12px;opacity:0;transition:opacity .2s}
-.cur.big{width:96px;height:96px;margin:-48px 0 0 -48px}.cur.big span{opacity:1}
-@media (hover:hover) and (pointer:fine){.cur{display:grid}}
 /* journey */
 #journey{position:relative;background:var(--deep);color:var(--light);padding:18vh 28px 12vh;overflow:hidden}
 .trail{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
@@ -108,10 +101,9 @@ header .clock{font-size:13px;opacity:.8}
  <svg viewBox="0 0 520 120"><path id="prePath" d="M0 90 C70 90 80 20 150 40 S230 110 300 70 S400 10 440 50 S500 80 520 60"/></svg>
  <div class="n" id="preN">0</div>
 </div>
-<div class="cur" id="cur" aria-hidden="true"><span></span></div>
 
 <header>
- <a class="logo" href="#work" data-cur="">Reonaldo</a>
+ <a class="logo" href="#work">Reonaldo</a>
  <nav><a href="#work">Work</a><a href="#journey">Journey</a><a href="#contact">Contact</a></nav>
  <span class="clock" id="clock"></span>
 </header>
@@ -137,14 +129,14 @@ header .clock{font-size:13px;opacity:.8}
  <article class="ch r"><div class="y">2024</div><div><h3 class="serif rv">Giving the company a voice</h3><p>Moved into corporate communications, mapped every touchpoint and wrote the first brand book.</p></div><div class="fl" style="--g:linear-gradient(200deg,#e8e0c8,#6b5f3c)"></div></article>
  <article class="ch"><div class="y">2025</div><div><h3 class="serif rv">From brand book to behavior</h3><p>Took the brand book to the floor through events and activations, and helped shape a service signature called Meaningful Journey.</p></div><div class="fl" style="--g:linear-gradient(160deg,#FF5A1F,#2b3a4a)"></div></article>
  <article class="ch r"><div class="y">2026</div><div><h3 class="serif rv">Leading the voice</h3><p>Leading a small team across employer branding, PR and CSR. Owning the annual strategy, events, crisis communication and guidelines.</p></div><div class="fl" style="--g:linear-gradient(200deg,#1c2b3a,#3d6b8f)"></div></article>
- <div class="end"><h3 class="serif rv">Brands people feel, not just see.</h3><a class="btn" href="#work" data-cur="">See the work</a></div>
+ <div class="end"><h3 class="serif rv">Brands people feel, not just see.</h3><a class="btn" href="#work">See the work</a></div>
 </section>
 
 <section id="contact" aria-label="Contact">
  <h2 class="serif">Let’s build something meaningful.</h2>
  <div class="row">
-  <a class="btn" id="mag" href="mailto:reonaldotaufik17@gmail.com" data-cur="">reonaldotaufik17@gmail.com</a>
-  <div class="links"><a href="https://www.linkedin.com/in/reonaldotaufik/" target="_blank" rel="noopener noreferrer" data-cur="">LinkedIn</a><a href="https://www.instagram.com/reonaldotavfik/" target="_blank" rel="noopener noreferrer" data-cur="">Instagram</a></div>
+  <a class="btn" id="mag" href="mailto:reonaldotaufik17@gmail.com">reonaldotaufik17@gmail.com</a>
+  <div class="links"><a href="https://www.linkedin.com/in/reonaldotaufik/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/reonaldotavfik/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
  </div>
 </section>
 </main>
@@ -182,7 +174,7 @@ tick();setInterval(tick,20000);
 /* build index */
 const col=$('#col'),names=$('#names');
 cases.forEach((c,i)=>{
- const b=document.createElement('button');b.className='it';b.style.setProperty('--g',c.g);b.dataset.cur='View';
+ const b=document.createElement('button');b.className='it';b.style.setProperty('--g',c.g);
  b.setAttribute('aria-label',c.t.replace(/&amp;/g,'&')+', open case study');
  b.innerHTML=`<span class="yr">${c.yr}</span><span class="tt">${c.t}</span>`;
  b.onclick=e=>{ if(i===Math.round(pos)) openCase(i,e.clientX,e.clientY); else target=i; };
@@ -239,13 +231,13 @@ const cs=$('#case');let cur=0,lastEl=null;
 function openCase(i,x=innerWidth/2,y=innerHeight/2){
  cur=i;const c=cases[i],nx=cases[(i+1)%N];lastEl=document.activeElement;
  const sec=(h,t)=>`<div class="sec"><h4>${h}</h4><p class="${t===NA?'ph':''}">${t}</p></div>`;
- cs.innerHTML=`<button class="x" id="cx" data-cur="">Close</button><div class="in">
+ cs.innerHTML=`<button class="x" id="cx">Close</button><div class="in">
   <h1 class="serif">${c.t}</h1>
   <div class="mrow"><div>Client<b>Eigerindo</b></div><div>Role<b>${c.role}</b></div><div>Year<b>${c.yr}</b></div><div>Scope<b>${c.cat}</b></div></div>
   ${sec('Context',c.ctx)}${sec('Insight',c.ins)}${sec('Idea',c.idea)}
   <div class="vis" style="--g:${c.g}" role="img" aria-label="Placeholder for case visuals"></div>
   ${sec('Execution',c.ex)}${sec('Impact',c.im)}
-  <a href="#" class="nxt" id="cn" data-cur="Next"><small>Next case</small><span class="serif">${nx.t}</span></a></div>`;
+  <a href="#" class="nxt" id="cn"><small>Next case</small><span class="serif">${nx.t}</span></a></div>`;
  $('#cx').onclick=closeCase;
  $('#cn').onclick=e=>{e.preventDefault();cs.scrollTop=0;openCase((cur+1)%N)};
  document.body.style.overflow='hidden';cs.style.visibility='visible';cs.scrollTop=0;
@@ -256,14 +248,6 @@ function openCase(i,x=innerWidth/2,y=innerHeight/2){
 function closeCase(){
  if(cs.style.visibility!=='visible')return;
  gsap.to(cs,{clipPath:'circle(0% at 50% 50%)',duration:reduce?0:.8,ease:'expo.inOut',onComplete:()=>{cs.style.visibility='hidden';document.body.style.overflow='';lastEl&&lastEl.focus&&lastEl.focus()}});
-}
-
-/* cursor */
-const cu=$('#cur'),cl=cu.querySelector('span');let mx=0,my=0,cx=0,cy=0;
-if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!reduce){
- addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
- addEventListener('mouseover',e=>{const t=e.target.closest('[data-cur]');cu.classList.toggle('big',!!(t&&t.dataset.cur));cl.textContent=t?t.dataset.cur:''});
- (function f(){cx+=(mx-cx)*.2;cy+=(my-cy)*.2;cu.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(f)})();
 }
 
 /* magnetic button */
